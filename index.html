@@ -15,6 +15,9 @@
       --muted:rgba(255,255,255,.75);
       --shadow: 0 18px 60px rgba(0,0,0,.45);
       --radius:22px;
+      --live:#ff2b2b;
+      --ok:#2bd6c0;
+      --warn:#ff9a22;
     }
 
     *{box-sizing:border-box}
@@ -25,7 +28,7 @@
       align-items:center;
       justify-content:center;
       color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       background:
         radial-gradient(900px 500px at 50% 42%, rgba(0,0,0,.38), rgba(0,0,0,0) 60%),
         linear-gradient(135deg, var(--bg1), var(--bg2));
@@ -33,7 +36,6 @@
       padding:24px;
     }
 
-    /* subtle blur blobs */
     .blob{
       position:absolute;
       width:520px;
@@ -81,7 +83,7 @@
 
     .live{
       width:min(520px, 100%);
-      margin:0 auto 18px;
+      margin:0 auto 16px;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -91,18 +93,44 @@
       border-radius:18px;
       cursor:pointer;
       color:#061518;
-      font-weight:800;
-      letter-spacing:.06em;
-      background: linear-gradient(90deg, #2bd6c0, #ff9a22);
+      font-weight:900;
+      letter-spacing:.08em;
+      background: linear-gradient(90deg, var(--ok), var(--warn));
       box-shadow: 0 14px 30px rgba(0,0,0,.25);
       transition: transform .15s ease, filter .15s ease;
       text-decoration:none;
+      user-select:none;
     }
     .live:hover{ transform: translateY(-2px); filter: brightness(1.03); }
-    .dot{
+
+    .status-dot{
       width:10px;height:10px;border-radius:50%;
-      background:#ff2b2b;
-      box-shadow: 0 0 0 6px rgba(255,43,43,.18);
+      background: rgba(255,255,255,.55);
+      box-shadow: 0 0 0 0 rgba(255,255,255,.0);
+      transition: background .2s ease, box-shadow .2s ease;
+    }
+
+    /* LIVE (encendido) */
+    .is-live .status-dot{
+      background: var(--live);
+      animation: pulse 1.2s infinite;
+    }
+    @keyframes pulse{
+      0%{ box-shadow: 0 0 0 0 rgba(255,43,43,.35); }
+      70%{ box-shadow: 0 0 0 10px rgba(255,43,43,0); }
+      100%{ box-shadow: 0 0 0 0 rgba(255,43,43,0); }
+    }
+
+    /* OFFLINE */
+    .is-offline .status-dot{
+      background: rgba(255,255,255,.55);
+    }
+
+    .substatus{
+      margin-top:-6px;
+      margin-bottom:14px;
+      font-size:13px;
+      color:rgba(255,255,255,.65);
     }
 
     .social-icons{
@@ -156,44 +184,40 @@
     <div class="tagline">Donde todo empieza</div>
 
     <section class="card" aria-label="Accesos">
-      <!-- LIVE: Cambiá el link al tuyo de YouTube -->
-      <a class="live" href="https://www.youtube.com/@elpozotv" target="_blank" rel="noopener">
-        <span class="dot" aria-hidden="true"></span>
-        LIVE
+      <!-- Botón LIVE PRO -->
+      <a id="liveBtn" class="live is-offline" href="https://www.youtube.com/@elpozotv/live" target="_blank" rel="noopener">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="liveText">OFFLINE</span>
       </a>
+      <div class="substatus" id="subStatus">Si estamos en vivo, este link entra directo al stream.</div>
 
       <!-- Íconos oficiales (SVG) + links -->
       <div class="social-icons" aria-label="Redes sociales">
         <a class="icon" href="https://instagram.com/elpozotv" target="_blank" rel="noopener" aria-label="Instagram">
-          <!-- Instagram -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9A3.5 3.5 0 0 0 20 16.5v-9A3.5 3.5 0 0 0 16.5 4h-9zm10.75 1.75a1 1 0 1 1 0 2a1 1 0 0 1 0-2zM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6a3 3 0 0 0 0-6z"/>
           </svg>
         </a>
 
         <a class="icon" href="https://www.tiktok.com/@elpozotv" target="_blank" rel="noopener" aria-label="TikTok">
-          <!-- TikTok -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M16.5 2c.4 3.2 2.3 5.2 5.5 5.5v3.1c-2-.1-3.7-.7-5.5-1.8v6.8c0 4.1-3.4 7.4-7.5 7.4S1.5 19 1.5 14.9S4.9 7.5 9 7.5c.5 0 1 .1 1.5.2v3.4c-.5-.2-1-.4-1.6-.4c-2.1 0-3.8 1.7-3.8 3.8s1.7 3.8 3.8 3.8s3.8-1.7 3.8-3.8V2h3.8z"/>
           </svg>
         </a>
 
         <a class="icon" href="https://www.youtube.com/@elpozotv" target="_blank" rel="noopener" aria-label="YouTube">
-          <!-- YouTube -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.6 12 4.6 12 4.6s-5.7 0-7.5.5A3 3 0 0 0 2.4 7.2 31 31 0 0 0 2 12s.1 2.7.4 4.8a3 3 0 0 0 2.1 2.1c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1c.3-2.1.4-4.8.4-4.8s-.1-2.7-.4-4.8zM10.2 15.3V8.7L15.9 12l-5.7 3.3z"/>
           </svg>
         </a>
 
         <a class="icon" href="https://kick.com/elpozo_tv" target="_blank" rel="noopener" aria-label="Kick">
-          <!-- Kick (K) -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M5 4h4v7l5-7h5l-6.2 8.4L19 20h-5l-5-6.8V20H5V4z"/>
           </svg>
         </a>
 
         <a class="icon" href="https://twitch.tv/elpozotv" target="_blank" rel="noopener" aria-label="Twitch">
-          <!-- Twitch -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M4 3h18v11l-5 5h-4l-2 2H8v-2H5V6L4 3zm2 3v11h3v2h2l2-2h4l3-3V6H6zm6 2h2v5h-2V8zm5 0h2v5h-2V8z"/>
           </svg>
@@ -203,5 +227,53 @@
       <div class="footer">© EL POZO TV</div>
     </section>
   </main>
+
+  <script>
+    /**
+     * MODO PRO (sin servidor):
+     * - El link /live es el correcto para entrar directo si estás en vivo.
+     * - Pero NO se puede detectar automáticamente "LIVE/OFFLINE" al 100% desde GitHub Pages
+     *   sin un endpoint servidor o API.
+     *
+     * Igual te dejo el botón "pro" con estados y preparado para modo FULL.
+     */
+
+    const liveBtn = document.getElementById("liveBtn");
+    const liveText = document.getElementById("liveText");
+    const subStatus = document.getElementById("subStatus");
+
+    // === MODO 1: manual rápido (cambiá true/false cuando vayas a streamear) ===
+    // Ponelo en true cuando estés en vivo (y listo).
+    const MANUAL_LIVE = false;
+
+    function setLiveState(isLive){
+      liveBtn.classList.toggle("is-live", isLive);
+      liveBtn.classList.toggle("is-offline", !isLive);
+      liveText.textContent = isLive ? "LIVE" : "OFFLINE";
+      subStatus.textContent = isLive
+        ? "Estamos en vivo ahora. Entrás directo al stream."
+        : "Si estamos en vivo, este link entra directo al stream.";
+    }
+
+    setLiveState(MANUAL_LIVE);
+
+    // === MODO 2: PRO FULL (automático real) ===
+    // Si más adelante creamos un endpoint (Vercel/Netlify/Render) que devuelva:
+    // { "live": true } o { "live": false }
+    // Pegás la URL aquí y descomentás el bloque.
+    //
+    // const STATUS_ENDPOINT = "https://TU-ENDPOINT.com/api/live";
+    // async function checkLive(){
+    //   try{
+    //     const res = await fetch(STATUS_ENDPOINT, { cache: "no-store" });
+    //     const data = await res.json();
+    //     if(typeof data.live === "boolean") setLiveState(data.live);
+    //   }catch(e){
+    //     // si falla, dejamos el estado actual
+    //   }
+    // }
+    // checkLive();
+    // setInterval(checkLive, 30000); // cada 30 segundos
+  </script>
 </body>
 </html>
