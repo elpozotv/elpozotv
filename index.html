@@ -19,7 +19,6 @@
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;}
 
 body{
   margin:0;
@@ -113,8 +112,12 @@ body{
   background:rgba(255,255,255,.12);
 }
 
-.icon{width:24px;height:24px;}
-.icon-fill{fill:white;}
+.icon{
+  width:24px;height:24px;
+}
+
+.icon-fill{ fill:white; }
+
 .icon-stroke{
   fill:none;
   stroke:white;
@@ -123,28 +126,10 @@ body{
   stroke-linejoin:round;
 }
 
-/* SEPARADOR ELEGANTE */
-.separator{
-  width:100%;
-  max-width:900px;
-  height:2px;
-  background:linear-gradient(90deg, transparent, var(--pill1), var(--pill2), transparent);
-  opacity:.5;
-  border-radius:999px;
-}
-
 /* ABOUT */
 .about{
   width:min(1100px,100%);
   text-align:center;
-  opacity:0;
-  transform:translateY(40px);
-  transition:all .8s ease;
-}
-
-.about.visible{
-  opacity:1;
-  transform:translateY(0);
 }
 
 .about h2{
@@ -169,14 +154,7 @@ body{
   border-radius:18px;
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.08);
-  transition:.6s;
-  opacity:0;
-  transform:translateY(30px);
-}
-
-.feature.visible{
-  opacity:1;
-  transform:translateY(0);
+  transition:.3s;
 }
 
 .feature:hover{
@@ -184,10 +162,18 @@ body{
   background:rgba(255,255,255,.08);
 }
 
+.feature h3{margin:10px 0}
+.feature p{font-size:14px;color:var(--muted)}
+
 /* CONTACTO */
 .contact-section{
   width:min(900px,100%);
   text-align:center;
+}
+
+.contact-section h2{
+  font-size:28px;
+  margin-bottom:20px;
 }
 
 .contact-form{
@@ -204,9 +190,13 @@ body{
   border:1px solid rgba(255,255,255,.15);
   background:rgba(255,255,255,.06);
   color:white;
+  font-size:14px;
 }
 
-.contact-form textarea{height:120px;resize:none;}
+.contact-form textarea{
+  resize:none;
+  height:120px;
+}
 
 .contact-form button{
   padding:14px;
@@ -230,7 +220,7 @@ body{
   transition:.2s;
 }
 
-.ad-button:hover{transform:translateY(-3px);}
+.ad-button:hover{ transform:translateY(-3px); }
 
 .footer{
   margin-top:40px;
@@ -246,14 +236,19 @@ body{
 <img class="banner" src="./bannerweb.png" alt="EL POZO TV">
 
 <section class="card">
+
   <a class="pill" href="https://www.youtube.com/@elpozotv" target="_blank">
     <div class="live-dot"></div>
     LIVE
   </a>
 
-  <div class="hint">Si estamos en vivo, este link entra directo al stream.</div>
+  <div class="hint">
+    Si estamos en vivo, este link entra directo al stream.
+  </div>
 
+  <!-- REDES -->
   <nav class="btn-row">
+
     <!-- Instagram -->
     <a class="icon-btn" href="https://www.instagram.com/elpozotv" target="_blank">
       <svg class="icon icon-stroke" viewBox="0 0 24 24">
@@ -262,25 +257,69 @@ body{
         <circle cx="17.5" cy="6.5" r="1"></circle>
       </svg>
     </a>
+
+    <!-- TikTok -->
+    <a class="icon-btn" href="https://www.tiktok.com/@elpozotv" target="_blank">
+      <svg class="icon icon-fill" viewBox="0 0 24 24">
+        <path d="M15 3h2c.2 2.2 1.8 4.2 4 4.6V9c-1.6-.1-3-.7-4-1.7v8.2c0 3-2.5 5.5-5.5 5.5S6 18.5 6 15.5 8.5 10 11.5 10c.5 0 1 .1 1.5.2V12c-.5-.3-1-.5-1.5-.5-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V3z"/>
+      </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a class="icon-btn" href="https://www.youtube.com/@elpozotv" target="_blank">
+      <svg class="icon icon-fill" viewBox="0 0 24 24">
+        <path d="M21.8 8s-.2-1.4-.8-2a2.9 2.9 0 0 0-2-1C16.2 4.7 12 4.7 12 4.7s-4.2 0-7 .3a2.9 2.9 0 0 0-2 1c-.6.6-.8 2-.8 2S2 9.6 2 11.3v1.4c0 1.7.2 3.3.2 3.3s.2 1.4.8 2a2.9 2.9 0 0 0 2 1c1.8.3 7 .3 7 .3s4.2 0 7-.3a2.9 2.9 0 0 0 2-1c.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1.4C22 9.6 21.8 8 21.8 8zM10 14.5V9.5l5 2.5-5 2.5z"/>
+      </svg>
+    </a>
+
+    <!-- Kick -->
+    <a class="icon-btn" href="https://kick.com/elpozo-tv" target="_blank">
+      <svg class="icon icon-fill" viewBox="0 0 24 24">
+        <path d="M4 4h16v16H4zM9 8v8h2v-3h2l2 3h2l-2.4-3.5L16 8h-2l-2 3h-2V8z"/>
+      </svg>
+    </a>
+
+    <!-- Twitch -->
+    <a class="icon-btn" href="https://www.twitch.tv/elpozotv" target="_blank">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path class="icon-stroke" d="M4 4h16v10l-4 4h-4l-2 2v-2H6l-2-3V4z"/>
+        <rect class="icon-fill" x="11" y="8" width="2" height="5"></rect>
+        <rect class="icon-fill" x="15" y="8" width="2" height="5"></rect>
+      </svg>
+    </a>
+
   </nav>
+
 </section>
 
-<div class="separator"></div>
-
-<section class="about" id="about">
+<!-- ABOUT -->
+<section class="about">
   <h2>¿Qué es EL POZO TV?</h2>
-  <p>Un espacio donde las ideas bajan profundo. Charlas reales, debates sin filtro y contenido que mezcla entretenimiento con opinión.</p>
+  <p>
+    Un espacio donde las ideas bajan profundo. Charlas reales, debates sin filtro y contenido que mezcla entretenimiento con opinión.
+  </p>
 
   <div class="grid">
-    <div class="feature">🎙 Charlas sin filtro</div>
-    <div class="feature">🎮 Streaming en vivo</div>
-    <div class="feature">🧠 Opinión</div>
-    <div class="feature">🔥 Comunidad</div>
+    <div class="feature">
+      <h3>🎙 Charlas sin filtro</h3>
+      <p>Conversaciones auténticas y directas.</p>
+    </div>
+    <div class="feature">
+      <h3>🎮 Streaming en vivo</h3>
+      <p>Gaming y actualidad en tiempo real.</p>
+    </div>
+    <div class="feature">
+      <h3>🧠 Opinión</h3>
+      <p>Miradas profundas sobre temas relevantes.</p>
+    </div>
+    <div class="feature">
+      <h3>🔥 Comunidad</h3>
+      <p>Un espacio donde todos participan.</p>
+    </div>
   </div>
 </section>
 
-<div class="separator"></div>
-
+<!-- CONTACTO -->
 <section class="contact-section">
   <h2>Contacto</h2>
 
@@ -307,23 +346,5 @@ body{
 </section>
 
 </main>
-
-<script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add("visible");
-    }
-  });
-},{threshold:0.2});
-
-observer.observe(document.querySelector(".about"));
-
-document.querySelectorAll(".feature").forEach((el,i)=>{
-  observer.observe(el);
-  el.style.transitionDelay = (i * 0.15) + "s";
-});
-</script>
-
 </body>
 </html>
