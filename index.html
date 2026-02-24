@@ -7,17 +7,26 @@
   <title>EL POZO TV — Donde todo empieza</title>
   <meta name="description" content="EL POZO TV — Donde todo empieza. Accedé al stream y a nuestras redes." />
 
+  <!-- Social preview (WhatsApp / IG / X) -->
+  <meta property="og:title" content="EL POZO TV — Donde todo empieza" />
+  <meta property="og:description" content="Accedé al stream y a nuestras redes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://elpozotv.net/" />
+  <meta property="og:image" content="https://elpozotv.net/bannerweb.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EL POZO TV — Donde todo empieza" />
+  <meta name="twitter:description" content="Accedé al stream y a nuestras redes." />
+  <meta name="twitter:image" content="https://elpozotv.net/bannerweb.png" />
+
   <style>
     :root{
       --bg1:#071b1f;
       --bg2:#06262c;
-      --card:#0c2d34cc;
       --stroke:rgba(255,255,255,.10);
       --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.70);
       --shadow: 0 18px 60px rgba(0,0,0,.45);
       --live:#ff2b2b;
-      --live2:#ff5252;
       --pill1:#25d2b5;
       --pill2:#ffb02e;
     }
@@ -50,47 +59,67 @@
       flex-direction:column;
       align-items:center;
       gap:28px;
+      animation: enter .7s ease-out both;
+    }
+    @keyframes enter{
+      from{ opacity:0; transform: translateY(10px); }
+      to{ opacity:1; transform: translateY(0); }
     }
 
-    /* Header (logo + tagline) */
+    /* BRAND */
     .brand{
       display:flex;
       flex-direction:column;
       align-items:center;
       gap:12px;
       text-align:center;
+      width:100%;
     }
 
-    /* Reemplazá esto por tu imagen si querés: */
-    .logo{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:14px;
-      padding:10px 14px;
-      border-radius:16px;
-      background: rgba(255,255,255,.02);
-      border:1px solid rgba(255,255,255,.06);
-      backdrop-filter: blur(6px);
+    /* Animated banner container */
+    .banner-wrap{
+      width:min(760px, 100%);
+      padding:14px 16px;
+      border-radius:22px;
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+      backdrop-filter: blur(8px);
     }
-    .logo .mark{
-      width:44px;height:44px;border-radius:14px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 45%),
-        linear-gradient(135deg, #25d2b5, #ffb02e);
-      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+
+    .banner-wrap::before{
+      content:"";
+      position:absolute;
+      inset:-60%;
+      background: radial-gradient(circle at 30% 30%, rgba(37,210,181,.22), transparent 45%),
+                  radial-gradient(circle at 70% 40%, rgba(255,176,46,.18), transparent 48%);
+      filter: blur(22px);
+      opacity:.55;
+      animation: glowMove 6s ease-in-out infinite;
+      pointer-events:none;
     }
-    .logo .name{
-      font-weight:900;
-      letter-spacing:.5px;
-      font-size:26px;
-      line-height:1;
+
+    @keyframes glowMove{
+      0%,100%{ transform: translate3d(-1%, -1%, 0) scale(1); }
+      50%{ transform: translate3d(1%, 1%, 0) scale(1.05); }
     }
-    .tagline{
-      font-size:18px;
-      color:var(--muted);
+
+    .banner{
+      width:100%;
+      height:auto;
+      display:block;
+      position:relative;
+      animation: floatLogo 4.8s ease-in-out infinite;
+      transform-origin:center;
+      will-change: transform;
     }
-    .tagline b{color:var(--text)}
+
+    @keyframes floatLogo{
+      0%,100%{ transform: translateY(0px); }
+      50%{ transform: translateY(-6px); }
+    }
 
     /* Card */
     .card{
@@ -122,7 +151,7 @@
       text-align:center;
     }
 
-    /* LIVE pill */
+    /* LIVE pill (full clickable) */
     .pill{
       text-decoration:none;
       width:min(520px, 100%);
@@ -132,13 +161,16 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
       box-shadow: 0 14px 35px rgba(0,0,0,.25);
       border:1px solid rgba(0,0,0,.10);
       position:relative;
+      overflow:hidden;
+      cursor:pointer;
+      transition: transform .15s ease, filter .15s ease;
     }
+    .pill:hover{ transform: translateY(-2px); filter: brightness(1.01); }
+
     .pill span{
-      text-decoration:none;
       font-weight:900;
       letter-spacing:2px;
       color:#062126;
@@ -148,7 +180,28 @@
       font-size:14px;
     }
 
-    /* red dot (always on) */
+    /* Shine */
+    .pill::after{
+      content:"";
+      position:absolute;
+      top:-40%;
+      left:-60%;
+      width:60%;
+      height:180%;
+      transform: rotate(25deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+      animation: shine 2.6s ease-in-out infinite;
+      opacity:.55;
+      pointer-events:none;
+    }
+    @keyframes shine{
+      0%{ left:-70%; opacity:0; }
+      20%{ opacity:.55; }
+      50%{ left:120%; opacity:.25; }
+      100%{ left:120%; opacity:0; }
+    }
+
+    /* red dot always on */
     .live-dot{
       width:10px;height:10px;border-radius:999px;
       background: var(--live);
@@ -156,6 +209,7 @@
         0 0 0 6px rgba(255,43,43,.15),
         0 0 14px rgba(255,43,43,.65);
       position:relative;
+      flex:0 0 auto;
     }
     .live-dot::after{
       content:"";
@@ -176,7 +230,7 @@
       color:rgba(255,255,255,.72);
     }
 
-    /* Buttons */
+    /* Social buttons */
     .btn-row{
       margin-top:10px;
       display:flex;
@@ -212,40 +266,24 @@
       letter-spacing:.5px;
     }
 
-    /* Primary CTA (optional) */
-    .cta{
-      margin-top:12px;
-      width:min(520px, 100%);
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-    .cta a{
-      text-decoration:none;
-      color:#071b1f;
-      font-weight:800;
-      padding:12px 16px;
-      border-radius:14px;
-      background: rgba(255,255,255,.90);
-      border:1px solid rgba(0,0,0,.08);
-      box-shadow: 0 14px 35px rgba(0,0,0,.22);
-      transition: transform .12s ease, filter .12s ease;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-    }
-    .cta a:hover{ transform: translateY(-2px); filter: brightness(1.02); }
-    .cta .dot{
-      width:8px;height:8px;border-radius:999px;background:var(--live);
-      box-shadow: 0 0 12px rgba(255,43,43,.7);
+    /* Focus (accessibility) */
+    a:focus-visible{
+      outline: 2px solid rgba(255,255,255,.55);
+      outline-offset: 4px;
+      border-radius: 14px;
     }
 
-    /* Responsive tweaks */
+    /* Responsive */
     @media (max-width:520px){
-      .logo .name{font-size:22px}
-      .tagline{font-size:16px}
       .pill{height:52px}
+    }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .banner, .banner-wrap::before, .stage, .pill::after, .live-dot::after{
+        animation: none !important;
+      }
+      .pill:hover, .icon-btn:hover{ transform:none; }
     }
   </style>
 </head>
@@ -254,27 +292,24 @@
   <main class="wrap">
     <section class="stage">
 
-      <!-- BRAND / LOGO -->
+      <!-- BRAND / BANNER -->
       <header class="brand">
-        <!-- Si querés usar tu logo PNG: reemplazá el div.logo por:
-             <img src="logo.png" alt="EL POZO TV" style="max-width:320px; width:80%; height:auto;">
-        -->
-       <img src="./bannerweb.png" alt="Banner" width="100%">
+        <div class="banner-wrap">
+          <img class="banner" src="./bannerweb.png" alt="EL POZO TV — Donde todo empieza" />
+        </div>
       </header>
 
       <!-- MAIN CARD -->
       <section class="card">
         <div class="card-inner">
 
-          <!-- LIVE STATUS (FIJO) -->
-          <div class="pill" role="status" aria-live="polite">
-            <a href="#" id="liveLink" target="_blank" rel="noopener">
-            <span class="dot" aria-hidden="true">
+          <!-- LIVE (always) -->
+          <a class="pill" href="#" id="liveLink" target="_blank" rel="noopener" aria-label="Entrar al live" role="button">
+            <span>
               <i class="live-dot" aria-hidden="true"></i>
               LIVE
             </span>
-            </a>
-          </div>
+          </a>
 
           <div class="hint">
             Si estamos en vivo, este link entra directo al stream.
@@ -305,7 +340,7 @@
               </svg>
             </a>
 
-            <!-- Kick (K) -->
+            <!-- Kick -->
             <a class="icon-btn" href="#" id="kick" target="_blank" rel="noopener" aria-label="Kick">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4 4h16v16H4V4zm4 4v8h2v-3h2l2 3h2l-2.4-3.5L16 8h-2l-2 3h-2V8H8z"/>
@@ -331,7 +366,7 @@
   <script>
     // === EDITÁ ESTOS LINKS (pegá tus URLs reales) ===
     const LINKS = {
-      live: "https://www.youtube.com/@elpozotv",         // o tu link de StreamElements / YouTube Live / Kick, etc.
+      live: "https://www.youtube.com/@elpozotv",         // Tu link principal del stream/canal
       instagram: "https://www.instagram.com/elpozotv",
       tiktok: "https://www.tiktok.com/@elpozotv",
       youtube: "https://www.youtube.com/@elpozotv",
@@ -339,7 +374,7 @@
       twitch: "https://www.twitch.tv/elpozotv"
     };
 
-    // Seteo de links (no hay lógica de ONLINE/OFFLINE: siempre LIVE)
+    // Seteo de links (siempre LIVE + luz roja siempre encendida)
     document.getElementById("liveLink").href = LINKS.live;
     document.getElementById("ig").href = LINKS.instagram;
     document.getElementById("tt").href = LINKS.tiktok;
@@ -349,9 +384,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
