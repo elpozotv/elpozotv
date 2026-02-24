@@ -7,17 +7,6 @@
   <title>EL POZO TV — Donde todo empieza</title>
   <meta name="description" content="EL POZO TV — Donde todo empieza. Accedé al stream y a nuestras redes." />
 
-  <!-- Social preview (WhatsApp / IG / X) -->
-  <meta property="og:title" content="EL POZO TV — Donde todo empieza" />
-  <meta property="og:description" content="Accedé al stream y a nuestras redes." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://elpozotv.net/" />
-  <meta property="og:image" content="https://elpozotv.net/bannerweb.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="EL POZO TV — Donde todo empieza" />
-  <meta name="twitter:description" content="Accedé al stream y a nuestras redes." />
-  <meta name="twitter:image" content="https://elpozotv.net/bannerweb.png" />
-
   <style>
     :root{
       --bg1:#071b1f;
@@ -35,85 +24,37 @@
     html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
       background:
         radial-gradient(1200px 700px at 50% 20%, rgba(255,255,255,.06), transparent 60%),
         radial-gradient(900px 650px at 20% 80%, rgba(37,210,181,.08), transparent 60%),
         radial-gradient(900px 650px at 80% 80%, rgba(255,176,46,.08), transparent 60%),
         linear-gradient(160deg, var(--bg1), var(--bg2));
-      overflow-x:hidden;
     }
 
     .wrap{
       min-height:100%;
       display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:48px 16px;
-    }
-
-    .stage{
-      width:min(980px, 100%);
-      display:flex;
       flex-direction:column;
       align-items:center;
-      gap:28px;
-      animation: enter .7s ease-out both;
-    }
-    @keyframes enter{
-      from{ opacity:0; transform: translateY(10px); }
-      to{ opacity:1; transform: translateY(0); }
+      padding:60px 16px;
+      gap:80px;
     }
 
-    /* BRAND */
-    .brand{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:12px;
-      text-align:center;
-      width:100%;
-    }
-
-    /* Animated banner container */
     .banner-wrap{
       width:min(760px, 100%);
-      padding:14px 16px;
+      padding:14px;
       border-radius:22px;
       background: rgba(255,255,255,.03);
       border:1px solid rgba(255,255,255,.08);
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
-      position:relative;
-      overflow:hidden;
-      backdrop-filter: blur(8px);
-    }
-
-    .banner-wrap::before{
-      content:"";
-      position:absolute;
-      inset:-60%;
-      background: radial-gradient(circle at 30% 30%, rgba(37,210,181,.22), transparent 45%),
-                  radial-gradient(circle at 70% 40%, rgba(255,176,46,.18), transparent 48%);
-      filter: blur(22px);
-      opacity:.55;
-      animation: glowMove 6s ease-in-out infinite;
-      pointer-events:none;
-    }
-
-    @keyframes glowMove{
-      0%,100%{ transform: translate3d(-1%, -1%, 0) scale(1); }
-      50%{ transform: translate3d(1%, 1%, 0) scale(1.05); }
+      box-shadow: var(--shadow);
+      text-align:center;
     }
 
     .banner{
       width:100%;
-      height:auto;
-      display:block;
-      position:relative;
-      animation: floatLogo 4.8s ease-in-out infinite;
-      transform-origin:center;
-      will-change: transform;
+      animation: floatLogo 5s ease-in-out infinite;
     }
 
     @keyframes floatLogo{
@@ -121,37 +62,16 @@
       50%{ transform: translateY(-6px); }
     }
 
-    /* Card */
     .card{
       width:min(820px, 100%);
       border-radius:20px;
       border:1px solid var(--stroke);
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .card::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(700px 240px at 30% 0%, rgba(37,210,181,.22), transparent 60%),
-                  radial-gradient(700px 240px at 70% 0%, rgba(255,176,46,.18), transparent 60%);
-      pointer-events:none;
-      filter: blur(10px);
-      opacity:.65;
-    }
-
-    .card-inner{
-      position:relative;
-      padding:28px 22px 22px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:14px;
+      padding:40px 20px;
       text-align:center;
     }
 
-    /* LIVE pill (full clickable) */
     .pill{
       text-decoration:none;
       width:min(520px, 100%);
@@ -161,83 +81,33 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      box-shadow: 0 14px 35px rgba(0,0,0,.25);
-      border:1px solid rgba(0,0,0,.10);
-      position:relative;
-      overflow:hidden;
-      cursor:pointer;
-      transition: transform .15s ease, filter .15s ease;
-    }
-    .pill:hover{ transform: translateY(-2px); filter: brightness(1.01); }
-
-    .pill span{
+      margin:0 auto;
       font-weight:900;
       letter-spacing:2px;
       color:#062126;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-size:14px;
     }
 
-    /* Shine */
-    .pill::after{
-      content:"";
-      position:absolute;
-      top:-40%;
-      left:-60%;
-      width:60%;
-      height:180%;
-      transform: rotate(25deg);
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
-      animation: shine 2.6s ease-in-out infinite;
-      opacity:.55;
-      pointer-events:none;
-    }
-    @keyframes shine{
-      0%{ left:-70%; opacity:0; }
-      20%{ opacity:.55; }
-      50%{ left:120%; opacity:.25; }
-      100%{ left:120%; opacity:0; }
-    }
-
-    /* red dot always on */
     .live-dot{
       width:10px;height:10px;border-radius:999px;
       background: var(--live);
-      box-shadow:
-        0 0 0 6px rgba(255,43,43,.15),
-        0 0 14px rgba(255,43,43,.65);
-      position:relative;
-      flex:0 0 auto;
-    }
-    .live-dot::after{
-      content:"";
-      position:absolute; inset:-10px;
-      border-radius:999px;
-      border:1px solid rgba(255,43,43,.25);
-      animation:pulse 1.4s infinite;
-    }
-    @keyframes pulse{
-      0%{transform:scale(.6); opacity:.0}
-      35%{opacity:.55}
-      100%{transform:scale(1.2); opacity:0}
+      margin-right:10px;
+      box-shadow: 0 0 14px rgba(255,43,43,.8);
     }
 
     .hint{
-      margin-top:2px;
+      margin-top:10px;
       font-size:13px;
-      color:rgba(255,255,255,.72);
+      color:var(--muted);
     }
 
-    /* Social buttons */
     .btn-row{
-      margin-top:10px;
+      margin-top:20px;
       display:flex;
-      flex-wrap:wrap;
       gap:10px;
       justify-content:center;
+      flex-wrap:wrap;
     }
+
     .icon-btn{
       width:46px;height:46px;
       border-radius:14px;
@@ -246,141 +116,133 @@
       display:grid;
       place-items:center;
       text-decoration:none;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      backdrop-filter: blur(8px);
+      transition:.2s;
     }
+
     .icon-btn:hover{
       transform: translateY(-2px);
-      background: rgba(255,255,255,.10);
-      border-color: rgba(255,255,255,.22);
+      background: rgba(255,255,255,.12);
     }
+
     .icon{
       width:22px;height:22px;
       fill: rgba(255,255,255,.92);
     }
 
+    /* NUEVA SECCION */
+    .about{
+      width:min(1100px,100%);
+      text-align:center;
+    }
+
+    .about h2{
+      font-size:32px;
+      margin-bottom:20px;
+    }
+
+    .about p{
+      color:var(--muted);
+      max-width:700px;
+      margin:0 auto 40px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap:20px;
+    }
+
+    .feature{
+      padding:24px;
+      border-radius:18px;
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      transition:.3s;
+    }
+
+    .feature:hover{
+      transform: translateY(-5px);
+      background: rgba(255,255,255,.08);
+    }
+
+    .feature h3{
+      margin:10px 0;
+    }
+
+    .feature p{
+      font-size:14px;
+      color:var(--muted);
+    }
+
     .footer{
-      margin-top:6px;
+      margin-top:40px;
       font-size:12px;
-      color:rgba(255,255,255,.55);
-      letter-spacing:.5px;
+      color:rgba(255,255,255,.5);
     }
 
-    /* Focus (accessibility) */
-    a:focus-visible{
-      outline: 2px solid rgba(255,255,255,.55);
-      outline-offset: 4px;
-      border-radius: 14px;
-    }
-
-    /* Responsive */
-    @media (max-width:520px){
-      .pill{height:52px}
-    }
-
-    /* Reduce motion */
-    @media (prefers-reduced-motion: reduce){
-      .banner, .banner-wrap::before, .stage, .pill::after, .live-dot::after{
-        animation: none !important;
-      }
-      .pill:hover, .icon-btn:hover{ transform:none; }
-    }
   </style>
 </head>
 
 <body>
   <main class="wrap">
-    <section class="stage">
 
-      <!-- BRAND / BANNER -->
-      <header class="brand">
-        <div class="banner-wrap">
-          <img class="banner" src="./bannerweb.png" alt="EL POZO TV — Donde todo empieza" />
-        </div>
-      </header>
+    <div class="banner-wrap">
+      <img class="banner" src="./bannerweb.png" alt="EL POZO TV">
+    </div>
 
-      <!-- MAIN CARD -->
-      <section class="card">
-        <div class="card-inner">
+    <section class="card">
+      <a class="pill" href="https://www.youtube.com/@elpozotv" target="_blank">
+        <div class="live-dot"></div>
+        LIVE
+      </a>
 
-          <!-- LIVE (always) -->
-          <a class="pill" href="#" id="liveLink" target="_blank" rel="noopener" aria-label="Entrar al live" role="button">
-            <span>
-              <i class="live-dot" aria-hidden="true"></i>
-              LIVE
-            </span>
-          </a>
+      <div class="hint">
+        Si estamos en vivo, este link entra directo al stream.
+      </div>
 
-          <div class="hint">
-            Si estamos en vivo, este link entra directo al stream.
-          </div>
-
-          <!-- SOCIALS -->
-          <nav class="btn-row" aria-label="Redes sociales">
-            <!-- Instagram -->
-            <a class="icon-btn" href="#" id="ig" target="_blank" rel="noopener" aria-label="Instagram">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm9 2h-9A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4z"/>
-                <path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
-                <path d="M17.6 6.4a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-              </svg>
-            </a>
-
-            <!-- TikTok -->
-            <a class="icon-btn" href="#" id="tt" target="_blank" rel="noopener" aria-label="TikTok">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M15 3h2c.2 2.2 1.8 4.2 4 4.6V9c-1.6-.1-3-.7-4-1.7v8.2c0 3-2.5 5.5-5.5 5.5S6 18.5 6 15.5 8.5 10 11.5 10c.5 0 1 .1 1.5.2V12c-.5-.3-1-.5-1.5-.5-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V3z"/>
-              </svg>
-            </a>
-
-            <!-- YouTube -->
-            <a class="icon-btn" href="#" id="yt" target="_blank" rel="noopener" aria-label="YouTube">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.5.4A3 3 0 0 0 2.4 7.2 31.2 31.2 0 0 0 2 12a31.2 31.2 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.4 7.5.4 7.5.4s5.8 0 7.5-.4a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 22 12a31.2 31.2 0 0 0-.4-4.8zM10 15.3V8.7L16 12l-6 3.3z"/>
-              </svg>
-            </a>
-
-            <!-- Kick -->
-            <a class="icon-btn" href="#" id="kick" target="_blank" rel="noopener" aria-label="Kick">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 4h16v16H4V4zm4 4v8h2v-3h2l2 3h2l-2.4-3.5L16 8h-2l-2 3h-2V8H8z"/>
-              </svg>
-            </a>
-
-            <!-- Twitch -->
-            <a class="icon-btn" href="#" id="tw" target="_blank" rel="noopener" aria-label="Twitch">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 3h18v12l-5 5h-4l-2 2H8v-2H4V3zm16 10V5H6v13h4v2l2-2h5l3-3z"/>
-                <path d="M15 7h2v6h-2V7zm-5 0h2v6h-2V7z"/>
-              </svg>
-            </a>
-          </nav>
-
-          <div class="footer">© EL POZO TV</div>
-        </div>
-      </section>
-
+      <nav class="btn-row">
+        <a class="icon-btn" href="https://www.instagram.com/elpozotv" target="_blank">📷</a>
+        <a class="icon-btn" href="https://www.tiktok.com/@elpozotv" target="_blank">🎵</a>
+        <a class="icon-btn" href="https://www.youtube.com/@elpozotv" target="_blank">▶</a>
+        <a class="icon-btn" href="https://kick.com/elpozo-tv" target="_blank">K</a>
+        <a class="icon-btn" href="https://www.twitch.tv/elpozotv" target="_blank">🎮</a>
+      </nav>
     </section>
+
+    <!-- NUEVA SECCION -->
+    <section class="about">
+      <h2>¿Qué es EL POZO TV?</h2>
+      <p>
+        Un espacio donde las ideas bajan profundo. Charlas reales, debates sin filtro y contenido que mezcla entretenimiento con opinión.
+      </p>
+
+      <div class="grid">
+        <div class="feature">
+          <h3>🎙 Charlas sin filtro</h3>
+          <p>Conversaciones auténticas, directas y sin guion.</p>
+        </div>
+
+        <div class="feature">
+          <h3>🎮 Streaming en vivo</h3>
+          <p>Gaming, actualidad y momentos espontáneos.</p>
+        </div>
+
+        <div class="feature">
+          <h3>🧠 Opinión y análisis</h3>
+          <p>Miradas profundas sobre temas que importan.</p>
+        </div>
+
+        <div class="feature">
+          <h3>🔥 Comunidad real</h3>
+          <p>Un espacio donde todos pueden participar.</p>
+        </div>
+      </div>
+
+      <div class="footer">
+        © EL POZO TV
+      </div>
+    </section>
+
   </main>
-
-  <script>
-    // === EDITÁ ESTOS LINKS (pegá tus URLs reales) ===
-    const LINKS = {
-      live: "https://www.youtube.com/@elpozotv",         // Tu link principal del stream/canal
-      instagram: "https://www.instagram.com/elpozotv",
-      tiktok: "https://www.tiktok.com/@elpozotv",
-      youtube: "https://www.youtube.com/@elpozotv",
-      kick: "https://kick.com/elpozo-tv",
-      twitch: "https://www.twitch.tv/elpozotv"
-    };
-
-    // Seteo de links (siempre LIVE + luz roja siempre encendida)
-    document.getElementById("liveLink").href = LINKS.live;
-    document.getElementById("ig").href = LINKS.instagram;
-    document.getElementById("tt").href = LINKS.tiktok;
-    document.getElementById("yt").href = LINKS.youtube;
-    document.getElementById("kick").href = LINKS.kick;
-    document.getElementById("tw").href = LINKS.twitch;
-  </script>
 </body>
 </html>
