@@ -116,9 +116,7 @@ body{
   width:24px;height:24px;
 }
 
-.icon-fill{
-  fill:white;
-}
+.icon-fill{ fill:white; }
 
 .icon-stroke{
   fill:none;
@@ -127,6 +125,45 @@ body{
   stroke-linecap:round;
   stroke-linejoin:round;
 }
+
+/* ABOUT */
+.about{
+  width:min(1100px,100%);
+  text-align:center;
+}
+
+.about h2{
+  font-size:32px;
+  margin-bottom:20px;
+}
+
+.about p{
+  color:var(--muted);
+  max-width:700px;
+  margin:0 auto 40px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.feature{
+  padding:24px;
+  border-radius:18px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  transition:.3s;
+}
+
+.feature:hover{
+  transform:translateY(-5px);
+  background:rgba(255,255,255,.08);
+}
+
+.feature h3{margin:10px 0}
+.feature p{font-size:14px;color:var(--muted)}
 
 /* CONTACTO */
 .contact-section{
@@ -183,9 +220,7 @@ body{
   transition:.2s;
 }
 
-.ad-button:hover{
-  transform:translateY(-3px);
-}
+.ad-button:hover{ transform:translateY(-3px); }
 
 .footer{
   margin-top:40px;
@@ -211,7 +246,7 @@ body{
     Si estamos en vivo, este link entra directo al stream.
   </div>
 
-  <!-- REDES RESTAURADAS -->
+  <!-- REDES -->
   <nav class="btn-row">
 
     <!-- Instagram -->
@@ -255,6 +290,33 @@ body{
 
   </nav>
 
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <h2>¿Qué es EL POZO TV?</h2>
+  <p>
+    Un espacio donde las ideas bajan profundo. Charlas reales, debates sin filtro y contenido que mezcla entretenimiento con opinión.
+  </p>
+
+  <div class="grid">
+    <div class="feature">
+      <h3>🎙 Charlas sin filtro</h3>
+      <p>Conversaciones auténticas y directas.</p>
+    </div>
+    <div class="feature">
+      <h3>🎮 Streaming en vivo</h3>
+      <p>Gaming y actualidad en tiempo real.</p>
+    </div>
+    <div class="feature">
+      <h3>🧠 Opinión</h3>
+      <p>Miradas profundas sobre temas relevantes.</p>
+    </div>
+    <div class="feature">
+      <h3>🔥 Comunidad</h3>
+      <p>Un espacio donde todos participan.</p>
+    </div>
+  </div>
 </section>
 
 <!-- CONTACTO -->
