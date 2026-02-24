@@ -25,8 +25,8 @@ body{
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
   color:var(--text);
   background:
-  radial-gradient(1200px 700px at 50% 20%, rgba(255,255,255,.06), transparent 60%),
-  linear-gradient(160deg,var(--bg1),var(--bg2));
+    radial-gradient(1200px 700px at 50% 20%, rgba(255,255,255,.06), transparent 60%),
+    linear-gradient(160deg,var(--bg1),var(--bg2));
 }
 
 .wrap{
@@ -110,13 +110,26 @@ body{
   background:rgba(255,255,255,.12);
 }
 
+/* Icon base */
 .icon{
   width:24px;height:24px;
-  fill:white;
+}
+
+/* Filled icons (TikTok/YT/Kick) */
+.icon-fill{
+  fill: rgba(255,255,255,.95);
+}
+
+/* Stroke icons (Instagram/Twitch) -> hace visibles los “huecos” */
+.icon-stroke{
+  fill:none;
+  stroke: rgba(255,255,255,.95);
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
 /* ABOUT */
-
 .about{
   width:min(1100px,100%);
   text-align:center;
@@ -169,53 +182,53 @@ body{
 <img class="banner" src="./bannerweb.png" alt="EL POZO TV">
 
 <section class="card">
-  <a class="pill" href="https://www.youtube.com/@elpozotv" target="_blank">
+  <a class="pill" href="https://www.youtube.com/@elpozotv" target="_blank" rel="noopener">
     <div class="live-dot"></div>
     LIVE
   </a>
 
-  <div class="hint">
-    Si estamos en vivo, este link entra directo al stream.
-  </div>
+  <div class="hint">Si estamos en vivo, este link entra directo al stream.</div>
 
-  <nav class="btn-row">
+  <nav class="btn-row" aria-label="Redes sociales">
 
-    <!-- Instagram -->
-    <a class="icon-btn" href="https://www.instagram.com/elpozotv" target="_blank">
-      <svg class="icon" viewBox="0 0 24 24">
-        <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2z"/>
-        <circle cx="12" cy="12" r="3.2"/>
-        <circle cx="17.2" cy="6.8" r="1"/>
+    <!-- Instagram (stroke para que se vea el lente) -->
+    <a class="icon-btn" href="https://www.instagram.com/elpozotv" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg class="icon icon-stroke" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+        <circle cx="12" cy="12" r="4"></circle>
+        <circle cx="17.5" cy="6.5" r="1"></circle>
       </svg>
     </a>
 
-    <!-- TikTok -->
-    <a class="icon-btn" href="https://www.tiktok.com/@elpozotv" target="_blank">
-      <svg class="icon" viewBox="0 0 24 24">
+    <!-- TikTok (fill) -->
+    <a class="icon-btn" href="https://www.tiktok.com/@elpozotv" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M15 3h2c.2 2.2 1.8 4.2 4 4.6V9c-1.6-.1-3-.7-4-1.7v8.2c0 3-2.5 5.5-5.5 5.5S6 18.5 6 15.5 8.5 10 11.5 10c.5 0 1 .1 1.5.2V12c-.5-.3-1-.5-1.5-.5-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V3z"/>
       </svg>
     </a>
 
-    <!-- YouTube -->
-    <a class="icon-btn" href="https://www.youtube.com/@elpozotv" target="_blank">
-      <svg class="icon" viewBox="0 0 24 24">
-        <path d="M21.8 8s-.2-1.4-.8-2a2.9 2.9 0 0 0-2-1C16.2 4.7 12 4.7 12 4.7h0s-4.2 0-7 .3a2.9 2.9 0 0 0-2 1c-.6.6-.8 2-.8 2S2 9.6 2 11.3v1.4c0 1.7.2 3.3.2 3.3s.2 1.4.8 2a2.9 2.9 0 0 0 2 1c1.8.3 7 .3 7 .3s4.2 0 7-.3a2.9 2.9 0 0 0 2-1c.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1.4C22 9.6 21.8 8 21.8 8zM10 14.5V9.5l5 2.5-5 2.5z"/>
+    <!-- YouTube (fill) -->
+    <a class="icon-btn" href="https://www.youtube.com/@elpozotv" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M21.8 8s-.2-1.4-.8-2a2.9 2.9 0 0 0-2-1C16.2 4.7 12 4.7 12 4.7s-4.2 0-7 .3a2.9 2.9 0 0 0-2 1c-.6.6-.8 2-.8 2S2 9.6 2 11.3v1.4c0 1.7.2 3.3.2 3.3s.2 1.4.8 2a2.9 2.9 0 0 0 2 1c1.8.3 7 .3 7 .3s4.2 0 7-.3a2.9 2.9 0 0 0 2-1c.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1.4C22 9.6 21.8 8 21.8 8zM10 14.5V9.5l5 2.5-5 2.5z"/>
       </svg>
     </a>
 
-    <!-- Kick -->
-    <a class="icon-btn" href="https://kick.com/elpozo-tv" target="_blank">
-      <svg class="icon" viewBox="0 0 24 24">
+    <!-- Kick (fill) -->
+    <a class="icon-btn" href="https://kick.com/elpozo-tv" target="_blank" rel="noopener" aria-label="Kick">
+      <svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M4 4h16v16H4zM9 8v8h2v-3h2l2 3h2l-2.4-3.5L16 8h-2l-2 3h-2V8z"/>
       </svg>
     </a>
 
-    <!-- Twitch CORRECTO -->
-    <a class="icon-btn" href="https://www.twitch.tv/elpozotv" target="_blank">
-      <svg class="icon" viewBox="0 0 24 24">
-        <path d="M3 3h18v13l-4 4h-4l-3 3v-3H3z"/>
-        <rect x="10" y="8" width="2" height="5"/>
-        <rect x="14" y="8" width="2" height="5"/>
+    <!-- Twitch (stroke + “ojos” sólidos) -->
+    <a class="icon-btn" href="https://www.twitch.tv/elpozotv" target="_blank" rel="noopener" aria-label="Twitch">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <!-- contorno -->
+        <path class="icon-stroke" d="M4 4h16v10l-4 4h-4l-2 2v-2H6l-2-3V4z"></path>
+        <!-- “ojos” (rellenos) -->
+        <rect class="icon-fill" x="11" y="8" width="2" height="5" rx="0.3"></rect>
+        <rect class="icon-fill" x="15" y="8" width="2" height="5" rx="0.3"></rect>
       </svg>
     </a>
 
