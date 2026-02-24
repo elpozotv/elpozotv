@@ -1,248 +1,264 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#061b1f" />
-  <title>EL POZO TV — Donde todo empieza</title>
-  <meta name="description" content="EL POZO TV — Donde todo empieza. Accedé al stream y a nuestras redes." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#061b1f" />
+<title>EL POZO TV — Donde todo empieza</title>
 
-  <style>
-    :root{
-      --bg1:#071b1f;
-      --bg2:#06262c;
-      --stroke:rgba(255,255,255,.10);
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.70);
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
-      --live:#ff2b2b;
-      --pill1:#25d2b5;
-      --pill2:#ffb02e;
-    }
+<style>
+:root{
+  --bg1:#071b1f;
+  --bg2:#06262c;
+  --stroke:rgba(255,255,255,.10);
+  --text:rgba(255,255,255,.92);
+  --muted:rgba(255,255,255,.70);
+  --shadow:0 18px 60px rgba(0,0,0,.45);
+  --live:#ff2b2b;
+  --pill1:#25d2b5;
+  --pill2:#ffb02e;
+}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 700px at 50% 20%, rgba(255,255,255,.06), transparent 60%),
-        radial-gradient(900px 650px at 20% 80%, rgba(37,210,181,.08), transparent 60%),
-        radial-gradient(900px 650px at 80% 80%, rgba(255,176,46,.08), transparent 60%),
-        linear-gradient(160deg, var(--bg1), var(--bg2));
-    }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  color:var(--text);
+  background:
+  radial-gradient(1200px 700px at 50% 20%, rgba(255,255,255,.06), transparent 60%),
+  linear-gradient(160deg,var(--bg1),var(--bg2));
+}
 
-    .wrap{
-      min-height:100%;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      padding:60px 16px;
-      gap:80px;
-    }
+.wrap{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:60px 16px;
+  gap:80px;
+}
 
-    .banner-wrap{
-      width:min(760px, 100%);
-      padding:14px;
-      border-radius:22px;
-      background: rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow: var(--shadow);
-      text-align:center;
-    }
+.banner-wrap{
+  width:min(760px,100%);
+  padding:14px;
+  border-radius:22px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:var(--shadow);
+}
 
-    .banner{
-      width:100%;
-      animation: floatLogo 5s ease-in-out infinite;
-    }
+.banner{
+  width:100%;
+  animation:floatLogo 5s ease-in-out infinite;
+}
+@keyframes floatLogo{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
 
-    @keyframes floatLogo{
-      0%,100%{ transform: translateY(0px); }
-      50%{ transform: translateY(-6px); }
-    }
+.card{
+  width:min(820px,100%);
+  border-radius:20px;
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,.05);
+  box-shadow:var(--shadow);
+  padding:40px 20px;
+  text-align:center;
+}
 
-    .card{
-      width:min(820px, 100%);
-      border-radius:20px;
-      border:1px solid var(--stroke);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      box-shadow: var(--shadow);
-      padding:40px 20px;
-      text-align:center;
-    }
+.pill{
+  text-decoration:none;
+  width:min(520px,100%);
+  height:54px;
+  border-radius:16px;
+  background:linear-gradient(90deg,var(--pill1),var(--pill2));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto;
+  font-weight:900;
+  letter-spacing:2px;
+  color:#062126;
+}
 
-    .pill{
-      text-decoration:none;
-      width:min(520px, 100%);
-      height:54px;
-      border-radius:16px;
-      background: linear-gradient(90deg, var(--pill1), var(--pill2));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin:0 auto;
-      font-weight:900;
-      letter-spacing:2px;
-      color:#062126;
-    }
+.live-dot{
+  width:10px;height:10px;border-radius:999px;
+  background:var(--live);
+  margin-right:10px;
+  box-shadow:0 0 14px rgba(255,43,43,.8);
+}
 
-    .live-dot{
-      width:10px;height:10px;border-radius:999px;
-      background: var(--live);
-      margin-right:10px;
-      box-shadow: 0 0 14px rgba(255,43,43,.8);
-    }
+.hint{
+  margin-top:10px;
+  font-size:13px;
+  color:var(--muted);
+}
 
-    .hint{
-      margin-top:10px;
-      font-size:13px;
-      color:var(--muted);
-    }
+.btn-row{
+  margin-top:20px;
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
 
-    .btn-row{
-      margin-top:20px;
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
+.icon-btn{
+  width:48px;height:48px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.2s;
+}
 
-    .icon-btn{
-      width:46px;height:46px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      display:grid;
-      place-items:center;
-      text-decoration:none;
-      transition:.2s;
-    }
+.icon-btn:hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,.12);
+}
 
-    .icon-btn:hover{
-      transform: translateY(-2px);
-      background: rgba(255,255,255,.12);
-    }
+.icon{
+  width:24px;height:24px;
+  fill:white;
+}
 
-    .icon{
-      width:22px;height:22px;
-      fill: rgba(255,255,255,.92);
-    }
+/* ABOUT SECTION */
 
-    /* NUEVA SECCION */
-    .about{
-      width:min(1100px,100%);
-      text-align:center;
-    }
+.about{
+  width:min(1100px,100%);
+  text-align:center;
+}
 
-    .about h2{
-      font-size:32px;
-      margin-bottom:20px;
-    }
+.about h2{
+  font-size:32px;
+  margin-bottom:20px;
+}
 
-    .about p{
-      color:var(--muted);
-      max-width:700px;
-      margin:0 auto 40px;
-    }
+.about p{
+  color:var(--muted);
+  max-width:700px;
+  margin:0 auto 40px;
+}
 
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-      gap:20px;
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
 
-    .feature{
-      padding:24px;
-      border-radius:18px;
-      background: rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      transition:.3s;
-    }
+.feature{
+  padding:24px;
+  border-radius:18px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  transition:.3s;
+}
 
-    .feature:hover{
-      transform: translateY(-5px);
-      background: rgba(255,255,255,.08);
-    }
+.feature:hover{
+  transform:translateY(-5px);
+  background:rgba(255,255,255,.08);
+}
 
-    .feature h3{
-      margin:10px 0;
-    }
+.feature h3{margin:10px 0}
+.feature p{font-size:14px;color:var(--muted)}
 
-    .feature p{
-      font-size:14px;
-      color:var(--muted);
-    }
-
-    .footer{
-      margin-top:40px;
-      font-size:12px;
-      color:rgba(255,255,255,.5);
-    }
-
-  </style>
+.footer{
+  margin-top:40px;
+  font-size:12px;
+  color:rgba(255,255,255,.5);
+}
+</style>
 </head>
 
 <body>
-  <main class="wrap">
+<main class="wrap">
 
-    <div class="banner-wrap">
-      <img class="banner" src="./bannerweb.png" alt="EL POZO TV">
+<div class="banner-wrap">
+  <img class="banner" src="./bannerweb.png" alt="EL POZO TV">
+</div>
+
+<section class="card">
+  <a class="pill" href="https://www.youtube.com/@elpozotv" target="_blank">
+    <div class="live-dot"></div>
+    LIVE
+  </a>
+
+  <div class="hint">
+    Si estamos en vivo, este link entra directo al stream.
+  </div>
+
+  <nav class="btn-row">
+
+    <!-- Instagram -->
+    <a class="icon-btn" href="https://www.instagram.com/elpozotv" target="_blank">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm9 2h-9A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4z"/>
+        <circle cx="12" cy="12" r="3.2"/>
+        <circle cx="17.2" cy="6.8" r="1"/>
+      </svg>
+    </a>
+
+    <!-- TikTok -->
+    <a class="icon-btn" href="https://www.tiktok.com/@elpozotv" target="_blank">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M15 3h2c.2 2.2 1.8 4.2 4 4.6V9c-1.6-.1-3-.7-4-1.7v8.2c0 3-2.5 5.5-5.5 5.5S6 18.5 6 15.5 8.5 10 11.5 10c.5 0 1 .1 1.5.2V12c-.5-.3-1-.5-1.5-.5-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V3z"/>
+      </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a class="icon-btn" href="https://www.youtube.com/@elpozotv" target="_blank">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.5.4A3 3 0 0 0 2.4 7.2 31.2 31.2 0 0 0 2 12a31.2 31.2 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.4 7.5.4 7.5.4s5.8 0 7.5-.4a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 22 12a31.2 31.2 0 0 0-.4-4.8zM10 15.3V8.7L16 12l-6 3.3z"/>
+      </svg>
+    </a>
+
+    <!-- Kick -->
+    <a class="icon-btn" href="https://kick.com/elpozo-tv" target="_blank">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M4 4h16v16H4zM9 8v8h2v-3h2l2 3h2l-2.4-3.5L16 8h-2l-2 3h-2V8z"/>
+      </svg>
+    </a>
+
+    <!-- Twitch -->
+    <a class="icon-btn" href="https://www.twitch.tv/elpozotv" target="_blank">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M4 3h18v12l-5 5h-4l-2 2H8v-2H4V3z"/>
+        <path d="M15 7h2v6h-2zM10 7h2v6h-2z"/>
+      </svg>
+    </a>
+
+  </nav>
+</section>
+
+<section class="about">
+  <h2>¿Qué es EL POZO TV?</h2>
+  <p>
+    Un espacio donde las ideas bajan profundo. Charlas reales, debates sin filtro y contenido que mezcla entretenimiento con opinión.
+  </p>
+
+  <div class="grid">
+    <div class="feature">
+      <h3>🎙 Charlas sin filtro</h3>
+      <p>Conversaciones auténticas y directas.</p>
     </div>
+    <div class="feature">
+      <h3>🎮 Streaming en vivo</h3>
+      <p>Gaming y actualidad en tiempo real.</p>
+    </div>
+    <div class="feature">
+      <h3>🧠 Opinión</h3>
+      <p>Miradas profundas sobre temas relevantes.</p>
+    </div>
+    <div class="feature">
+      <h3>🔥 Comunidad</h3>
+      <p>Un espacio donde todos participan.</p>
+    </div>
+  </div>
 
-    <section class="card">
-      <a class="pill" href="https://www.youtube.com/@elpozotv" target="_blank">
-        <div class="live-dot"></div>
-        LIVE
-      </a>
+  <div class="footer">© EL POZO TV</div>
+</section>
 
-      <div class="hint">
-        Si estamos en vivo, este link entra directo al stream.
-      </div>
-
-      <nav class="btn-row">
-        <a class="icon-btn" href="https://www.instagram.com/elpozotv" target="_blank">📷</a>
-        <a class="icon-btn" href="https://www.tiktok.com/@elpozotv" target="_blank">🎵</a>
-        <a class="icon-btn" href="https://www.youtube.com/@elpozotv" target="_blank">▶</a>
-        <a class="icon-btn" href="https://kick.com/elpozo-tv" target="_blank">K</a>
-        <a class="icon-btn" href="https://www.twitch.tv/elpozotv" target="_blank">🎮</a>
-      </nav>
-    </section>
-
-    <!-- NUEVA SECCION -->
-    <section class="about">
-      <h2>¿Qué es EL POZO TV?</h2>
-      <p>
-        Un espacio donde las ideas bajan profundo. Charlas reales, debates sin filtro y contenido que mezcla entretenimiento con opinión.
-      </p>
-
-      <div class="grid">
-        <div class="feature">
-          <h3>🎙 Charlas sin filtro</h3>
-          <p>Conversaciones auténticas, directas y sin guion.</p>
-        </div>
-
-        <div class="feature">
-          <h3>🎮 Streaming en vivo</h3>
-          <p>Gaming, actualidad y momentos espontáneos.</p>
-        </div>
-
-        <div class="feature">
-          <h3>🧠 Opinión y análisis</h3>
-          <p>Miradas profundas sobre temas que importan.</p>
-        </div>
-
-        <div class="feature">
-          <h3>🔥 Comunidad real</h3>
-          <p>Un espacio donde todos pueden participar.</p>
-        </div>
-      </div>
-
-      <div class="footer">
-        © EL POZO TV
-      </div>
-    </section>
-
-  </main>
+</main>
 </body>
 </html>
