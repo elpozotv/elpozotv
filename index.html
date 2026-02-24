@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="theme-color" content="#061b1f" />
 <title>EL POZO TV — Donde todo empieza</title>
 
 <style>
@@ -20,6 +19,7 @@
 }
 
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
@@ -38,17 +38,9 @@ body{
   gap:80px;
 }
 
-.banner-wrap{
-  width:min(760px,100%);
-  padding:14px;
-  border-radius:22px;
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.08);
-  box-shadow:var(--shadow);
-}
-
+/* LOGO SIN FONDO */
 .banner{
-  width:100%;
+  width:min(760px,100%);
   animation:floatLogo 5s ease-in-out infinite;
 }
 @keyframes floatLogo{
@@ -123,7 +115,7 @@ body{
   fill:white;
 }
 
-/* ABOUT SECTION */
+/* ABOUT */
 
 .about{
   width:min(1100px,100%);
@@ -174,9 +166,7 @@ body{
 <body>
 <main class="wrap">
 
-<div class="banner-wrap">
-  <img class="banner" src="./bannerweb.png" alt="EL POZO TV">
-</div>
+<img class="banner" src="./bannerweb.png" alt="EL POZO TV">
 
 <section class="card">
   <a class="pill" href="https://www.youtube.com/@elpozotv" target="_blank">
@@ -193,7 +183,7 @@ body{
     <!-- Instagram -->
     <a class="icon-btn" href="https://www.instagram.com/elpozotv" target="_blank">
       <svg class="icon" viewBox="0 0 24 24">
-        <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm9 2h-9A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4z"/>
+        <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2z"/>
         <circle cx="12" cy="12" r="3.2"/>
         <circle cx="17.2" cy="6.8" r="1"/>
       </svg>
@@ -209,7 +199,7 @@ body{
     <!-- YouTube -->
     <a class="icon-btn" href="https://www.youtube.com/@elpozotv" target="_blank">
       <svg class="icon" viewBox="0 0 24 24">
-        <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.5.4A3 3 0 0 0 2.4 7.2 31.2 31.2 0 0 0 2 12a31.2 31.2 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.4 7.5.4 7.5.4s5.8 0 7.5-.4a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 22 12a31.2 31.2 0 0 0-.4-4.8zM10 15.3V8.7L16 12l-6 3.3z"/>
+        <path d="M21.8 8s-.2-1.4-.8-2a2.9 2.9 0 0 0-2-1C16.2 4.7 12 4.7 12 4.7h0s-4.2 0-7 .3a2.9 2.9 0 0 0-2 1c-.6.6-.8 2-.8 2S2 9.6 2 11.3v1.4c0 1.7.2 3.3.2 3.3s.2 1.4.8 2a2.9 2.9 0 0 0 2 1c1.8.3 7 .3 7 .3s4.2 0 7-.3a2.9 2.9 0 0 0 2-1c.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1.4C22 9.6 21.8 8 21.8 8zM10 14.5V9.5l5 2.5-5 2.5z"/>
       </svg>
     </a>
 
@@ -220,11 +210,12 @@ body{
       </svg>
     </a>
 
-    <!-- Twitch -->
+    <!-- Twitch CORRECTO -->
     <a class="icon-btn" href="https://www.twitch.tv/elpozotv" target="_blank">
       <svg class="icon" viewBox="0 0 24 24">
-        <path d="M4 3h18v12l-5 5h-4l-2 2H8v-2H4V3z"/>
-        <path d="M15 7h2v6h-2zM10 7h2v6h-2z"/>
+        <path d="M3 3h18v13l-4 4h-4l-3 3v-3H3z"/>
+        <rect x="10" y="8" width="2" height="5"/>
+        <rect x="14" y="8" width="2" height="5"/>
       </svg>
     </a>
 
